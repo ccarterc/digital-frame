@@ -10,3 +10,9 @@ Make sure eog is installed on client:
 Update the ip address in the client code so it points to the server.
 Spin up server after loading the images folder.
 Spin up the client
+
+---------------
+
+To use webcam install:
+`sudo apt-get install fswebcam`
+`fswebcam -r 1280x720 --no-banner image.jpg` to take a pic
