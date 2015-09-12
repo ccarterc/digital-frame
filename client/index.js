@@ -49,7 +49,7 @@ var loop = (function(loop){
 		downloadImage();
 		interval = setInterval(function(){
 			downloadImage();
-		}, 7500);
+		}, 10000);
 	}
 
 	loop.stop = function(){
@@ -64,4 +64,4 @@ loop.start();
 setInterval(function(){
 	loop.stop();
 	child.kill();
-}, 20000);
+}, 31000);
