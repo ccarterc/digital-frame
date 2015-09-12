@@ -8,6 +8,7 @@ app.get('/pics/random', function(req, res){
 	//console.log('__dirname = ' + __dirname);
 	//generate random int between 0 and num images - 1
 	var randomNum = Math.floor(Math.random() * images.length);
+	res.set('image_name', images[randomNum]);
 	res.sendFile(__dirname + IMG_DIR + images[randomNum], function(err){
 		if(err){
 			console.log(err);
