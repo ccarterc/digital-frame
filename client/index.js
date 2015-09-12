@@ -2,6 +2,7 @@ var http = require('http');
 var fs = require('fs');
 var spawn = require('child_process').spawn;
 var child = {};
+var serverIp = '192.168.1.206';//'localhost'
 
 function downloadImage(){
 	var request;
@@ -13,7 +14,7 @@ function downloadImage(){
 		//process.kill(child.pid);
 	}	
 	request = http.request({
-			hostname: 'localhost',
+			hostname: serverIp,
 			port: 3000,
 			path: '/pics/random',
 			method: 'GET'
@@ -45,12 +46,22 @@ var loop = (function(loop){
 	var interval;
 
 	loop.start = function(){
+		downloadImage();
 		interval = setInterval(function(){
 			downloadImage();
-		}, 5000);
+		}, 7500);
+	}
+
+	loop.stop = function(){
+		clearInterval(interval);
 	}
 
 	return loop;
 }(loop || {}));
 
 loop.start();
+
+setInterval(function(){
+	loop.stop();
+	child.kill();
+}, 20000);
